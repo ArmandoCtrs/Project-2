@@ -51,6 +51,7 @@ fn translate_and_build(nums: &[&str]) -> Vec<i32> {
     new_list
 }
 
+//Simple loop to print the integer numbers, separated by spaces
 fn print_translation(numbers: &Vec<i32>) {
     print!("Translation: {} ", numbers[0]);
     for i in 1..numbers.len(){
@@ -59,6 +60,7 @@ fn print_translation(numbers: &Vec<i32>) {
     println!();
 }
 
+//Simple loop to print the integer numbers, separated by +'s, with the sum printed last
 fn print_addition(numbers: &Vec<i32>) {
     print!("Addition:  {} ", numbers[0]);
     for i in 1..numbers.len(){
@@ -69,6 +71,7 @@ fn print_addition(numbers: &Vec<i32>) {
     println!("= {}", sum);
 }
 
+//Simple loop to print the integer numbers, separated by *'s, with the product printed last
 fn print_multiplication(numbers: &Vec<i32>) {
     print!("Multiplication:  {} ", numbers[0]);
     for i in 1..numbers.len(){

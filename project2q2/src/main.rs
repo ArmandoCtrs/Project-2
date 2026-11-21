@@ -103,7 +103,26 @@ fn do_binary_addition(bits1: Vec<bool>, bits2: Vec<bool>, carry: bool) -> Vec<bo
     new_list
 }
 
-
+//This function is only called when there is one or
+//no remaing lists of bits. For no lists (an empty
+//list), the function still checks the carry. For
+//a single remaining list, the function utilizes
+//pattern matching to check for two conditions. The
+//first condition is if both the current head of 
+//the list and the carry are true, then a false
+//(0-bit) is pushed to the list and a true carry
+//(1-bit) is sent with the tail sublist as
+//parameters to a recursive call of the function
+//in order to append the results from that function
+//call to the existing list.
+//The other condition is for all other combinations
+//of two booleans. This condition executes a push
+//to the list based on the results of using the OR
+//operator on the head and carry. Then a false carry
+//(0-bit) is sent with the tail sublist as
+//parameters to a recursive call of the function
+//in order to append the results from that function
+//call to the existing list.
 fn finish_binary_add(bits: Vec<bool>, carry: bool) -> Vec<bool> {
     let mut new_list: Vec<bool> = vec![];
 
@@ -130,7 +149,11 @@ fn finish_binary_add(bits: Vec<bool>, carry: bool) -> Vec<bool> {
     new_list
 }
 
-
+//This function simply reverses the two lists of bits,
+//converts the lists to type bool, conducts the binary
+//addition by calling do_binary_addition, stores the
+//results in a new list, and then reverses the list
+//back to proper order before returning the results
 fn binary_addition(bits1: Vec<i32>, bits2: Vec<i32>) -> Vec<i32> {
     let mut bits1_rev = bits1.clone();
     let mut bits2_rev = bits2.clone();
@@ -147,6 +170,14 @@ fn binary_addition(bits1: Vec<i32>, bits2: Vec<i32>) -> Vec<i32> {
     bool_to_int(bool_added)
 }
 
+//This function inverts bits in the form of bools
+//by pattern meatching for two cases: an empty list
+//or a list with a head. An empty list returns nothing
+//stops the function. A list with one ore more
+//elements executes code to push the inversion of the
+//bool value in head to the current working list, then
+//appends the results of recursively calling the
+//function with the tail sublist as a paremeter.
 fn invert_bits(bits: Vec<bool>) -> Vec<bool> {
     let mut new_list = vec![];
 
@@ -161,6 +192,15 @@ fn invert_bits(bits: Vec<bool>) -> Vec<bool> {
     new_list
 }
 
+//This function reverses the two lists of bits,
+//converts the lists to type bool, pads the shorter
+//list with false (0's), inverts the bits of the
+//second list, then conducts binary addition by
+//calling do_binary_addition, stores the
+//results in a new list, truncates the list to
+//account for the extra carry out bit, and then
+//reverses the list back to proper order before
+//returning the results.
 fn binary_subtraction(bits1: Vec<i32>, bits2: Vec<i32>) -> Vec<i32> {
     let mut bits1_rev = bits1.clone();
     let mut bits2_rev = bits2.clone();
