@@ -6,6 +6,12 @@ fn main() {
     println!("Binary Subtraction result: {:?}", result2);
 }
 
+//Converts a list of i32 to bool by checking if the head
+//from a non-empty list matches 0 or 1 (panics for any
+//other value). If 0, adds false to the list, otherwise
+//if 1, adds true to the list. Then recursively calls
+//itslef with the tail sublist until empty, which marks
+//the end of the list
 fn int_to_bool(bits: Vec<i32>) -> Vec<bool> {
     let mut new_list: Vec<bool> = vec![];
 
@@ -23,6 +29,11 @@ fn int_to_bool(bits: Vec<i32>) -> Vec<bool> {
     }
 }
 
+//Converts a list of bool to i32 by checking if the head
+//from a non-empty list matches false or true. If false,
+//adds 0 to the list, otherwise if true, adds 1 to the
+//list. Then recursively calls itslef with the tail
+//sublist until empty, which marks the end of the list
 fn bool_to_int(bits: Vec<bool>) -> Vec<i32> {
     let mut new_list: Vec<i32> = vec![];
 
@@ -39,7 +50,22 @@ fn bool_to_int(bits: Vec<bool>) -> Vec<i32> {
     }
 }
 
-
+//builds a new list representing the sum of adding
+//the two lists in the parameters, bits1 and bits2.
+//Starts by pattern matching: if both bits1 and
+//bits2 are empty, then lets finish_binary_add
+//complete the addition operation. Then checks the
+//case of an empty list and non-empty list by
+//matching two cases. Both of these cases are
+//handled by finish_binary_add. Finally, the last
+//case is for matching on two non-empty lists.
+//wherein the sum is calculated is an XOR on
+//the head of bits1, bits2, and the carry. Finally,
+//that sum is added to the new list and the two
+//tail sublists and a new carry based on the sum
+//are sent as parameters to recursively call the
+//function until there are no elements left to
+//process in either list
 fn do_binary_addition(bits1: Vec<bool>, bits2: Vec<bool>, carry: bool) -> Vec<bool> {
     let mut new_list = Vec::new();
 
@@ -103,6 +129,7 @@ fn finish_binary_add(bits: Vec<bool>, carry: bool) -> Vec<bool> {
 
     new_list
 }
+
 
 fn binary_addition(bits1: Vec<i32>, bits2: Vec<i32>) -> Vec<i32> {
     let mut bits1_rev = bits1.clone();
