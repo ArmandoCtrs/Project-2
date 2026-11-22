@@ -116,7 +116,7 @@ fn is_prime(num: i32) -> bool {
 //condition is any value n if n is wholly divisible
 //by i, which returns false (not prime as the number
 //num is divisible by a number other than 1 or itself).
-//The last conidition is another number which 
+//The last condition is another number which 
 //recursively the function with the incremented
 //value of num, so as to continuing searching
 //if any number between 2 and num can wholly divide

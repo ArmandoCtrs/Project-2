@@ -1,5 +1,0 @@
-#lang racket
-
-(define chinese '(ling yi er san si wu liu qi ba jiu shi))
-(define english '(zero one two three four five six seven eight nine ten))
-
